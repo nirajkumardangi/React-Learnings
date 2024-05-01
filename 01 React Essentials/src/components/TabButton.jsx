@@ -1,8 +1,13 @@
 /* eslint-disable react/prop-types */
 function TabButton({children}) {
+  function handelClick() {
+    console.log("Hello World");
+  }
+
   return (
-    
-    <li><button>{children}</button></li>
+    <li>
+      <button onClick={handelClick}>{children}</button>
+    </li>
   )
 }
 
