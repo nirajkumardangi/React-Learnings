@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-function TabButton({children}) {
-  function handelClick() {
-    console.log("Hello World");
-  }
+
+function TabButton({children, onSelect}) {
 
   return (
     <li>
-      <button onClick={handelClick}>{children}</button>
+      <button onClick={onSelect}>{children}</button>
     </li>
   )
 }
