@@ -1,4 +1,6 @@
 import reactImg from '../assets/react-core-concepts.png';
+import componentsImg from '../assets/components.png';
+import CoreConcept from "../components/CoreConcept";
 
 const reactDescriptions = ["Fundamentals", "Crucial", "Core"];
 
@@ -10,7 +12,7 @@ function genRandomInt(max) {
 function Header() {
   const description = reactDescriptions[genRandomInt(2)];
 
-  return(
+  return (
     <>
       <header>
         <img src={reactImg} alt="Stylized atom" />
@@ -21,7 +23,19 @@ function Header() {
         </p>
       </header>
       <main>
-        <h2>Time to get started!</h2>
+        <section id='core-concepts'>
+          <h2>Time to get started!</h2>
+          <ul>
+            <CoreConcept 
+              title="components" 
+              description = "The core UI building block"
+              image = {componentsImg}
+            />
+            <CoreConcept />
+            <CoreConcept />
+            <CoreConcept />
+          </ul>
+        </section>
       </main>
     </>
   );
