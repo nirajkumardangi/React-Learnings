@@ -5,8 +5,8 @@ import TabButton from "./components/TabButton.jsx";
 
 
 function App() {
-  function handelSelect() {
-    console.log("Selected!!!");
+  function handelSelect(selectedButton) {
+    console.log(selectedButton);
   }
 
   return (
@@ -25,10 +25,10 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={handelSelect}>Components</TabButton>
-            <TabButton onSelect={handelSelect}>JSX</TabButton>
-            <TabButton onSelect={handelSelect}>Props</TabButton>
-            <TabButton onSelect={handelSelect}>State</TabButton>
+            <TabButton onSelect={() => handelSelect("components")}>Components</TabButton>
+            <TabButton onSelect={() => handelSelect("jsx")}>JSX</TabButton>
+            <TabButton onSelect={() => handelSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handelSelect("state")}>State</TabButton>
           </menu>
         </section>
       </main>
