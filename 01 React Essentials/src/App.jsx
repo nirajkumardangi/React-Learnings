@@ -44,10 +44,10 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => handelSelect("components")}>Components</TabButton>
-            <TabButton onSelect={() => handelSelect("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => handelSelect("props")}>Props</TabButton>
-            <TabButton onSelect={() => handelSelect("state")}>State</TabButton>
+            <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handelSelect("components")}>Components</TabButton>
+            <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handelSelect("jsx")}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic === 'props'} onSelect={() => handelSelect("props")}>Props</TabButton>
+            <TabButton isSelected={selectedTopic === 'state'} onSelect={() => handelSelect("state")}>State</TabButton>
           </menu>
           {tabContent}
         </section>
