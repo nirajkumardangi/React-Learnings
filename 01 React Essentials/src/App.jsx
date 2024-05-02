@@ -17,15 +17,15 @@ function App() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <main>
         <section id='core-concepts'>
           <h2>Time to get started!</h2>
           <ul>
-            <CoreConcept {...CORE_CONCEPTS[0]}/>
-            <CoreConcept {...CORE_CONCEPTS[1]}/>
-            <CoreConcept {...CORE_CONCEPTS[2]}/>
-            <CoreConcept {...CORE_CONCEPTS[3]}/>
+            <CoreConcept {...CORE_CONCEPTS[0]} />
+            <CoreConcept {...CORE_CONCEPTS[1]} />
+            <CoreConcept {...CORE_CONCEPTS[2]} />
+            <CoreConcept {...CORE_CONCEPTS[3]} />
           </ul>
         </section>
         <section id="examples">
@@ -36,13 +36,16 @@ function App() {
             <TabButton onSelect={() => handelSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handelSelect("state")}>State</TabButton>
           </menu>
-          <div className="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>{EXAMPLES[selectedTopic].description}</p>
-            <pre>
-              <code>{EXAMPLES[selectedTopic].code}</code>
-            </pre>
-          </div>
+          {!selectedTopic ? (
+            <p>Please select a topic.</p>
+          ) : (
+            <div className="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].description}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>)}
         </section>
       </main>
     </>
