@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
-export default function Tabs({ buttons, children, ButtonsContainer }) {
+export default function Tabs({ buttons, children, ButtonsContainer='menu' }) {
   // const ButtonContainer = buttonsContainer;
   return (
     <>
-      <ButtonContainer>{buttons}</ButtonContainer>
+      <ButtonsContainer>{buttons}</ButtonsContainer>
       {children}
     </>
   )
