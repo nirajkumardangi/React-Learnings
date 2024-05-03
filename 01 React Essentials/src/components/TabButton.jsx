@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
-function TabButton({children, onSelect, isSelected}) {
+function TabButton({ children, isSelected, ...props }) {
 
   return (
     <li>
-      <button className={isSelected ? 'active' : undefined} onClick={onSelect}>{children}</button>
+      <button className={isSelected ? 'active' : undefined} {...props}>{children}</button>
     </li>
   )
 }
