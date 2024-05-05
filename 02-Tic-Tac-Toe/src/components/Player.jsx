@@ -4,13 +4,15 @@ export default function Player({name, symbol}) {
   const [ isEditing, setIsEditing ] = useState(false);
 
   function handelEditClick(){
-    return setIsEditing(true);
+    setIsEditing(!isEditing);
   }
 
   let playerName = <span className='player-name'>{name}</span>;
+  // let btnCaption = 'Edit'
   
   if(isEditing) {
-    playerName = <input type="text" required />
+    playerName = <input type="text" required value={name} />
+    // btnCaption= "Save"
   }
 
   return (
@@ -22,7 +24,7 @@ export default function Player({name, symbol}) {
 
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handelEditClick}>Edit</button>
+      <button onClick={handelEditClick}>{isEditing ? 'Save' : 'Edit'}</button>
     </li>
   )
 }
