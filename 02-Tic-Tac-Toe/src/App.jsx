@@ -27,7 +27,6 @@ export default function App() {
   // const [activePlayer, setActivePlayer] = useState('X');
 
   const activePlayer = deriveActivePlayer(gameTurns);
-
   let gameBoard = initialGameBoard;
 
   for (const turn of gameTurns) {
@@ -53,6 +52,8 @@ export default function App() {
     }
   }
 
+  const hasDraw = gameTurns.length === 9 && !winner;
+
   function handleSelectSquare(rowIndex, colIndex) {
     // setActivePlayer((curActivePlayer) => (curActivePlayer === 'X' ? 'O' : 'X'));
     setGameTurns((prevTurns) => {
@@ -74,7 +75,7 @@ export default function App() {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'} />
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'} />
         </ol>
-        {winner && <GameOver winner={winner}/>}
+        {(winner || hasDraw) && <GameOver winner={winner}/>}
         <GameBoard
           board={gameBoard}
           onSelectSquare={handleSelectSquare}
