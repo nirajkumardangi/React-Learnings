@@ -24,6 +24,10 @@ function deriveActivePlayer(gameTurns) {
 
 export default function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const [players, setPlayers] = useState({
+    'X': 'Player-1',
+    'O': 'Player-2',
+  });
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
@@ -48,7 +52,7 @@ export default function App() {
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
     }
   }
 
@@ -65,19 +69,38 @@ export default function App() {
       ];
 
       return updatedTurns;
-    })
+    });
   }
 
   function handelRestart() {
     setGameTurns([]);
   }
 
+  function handelPlayerNameChange(symbol, newName) {
+    setPlayers(prevPlayer => {
+      return {
+        ...prevPlayer,
+        [symbol]: newName
+      };
+    });
+  }
+
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'} />
-          <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'} />
+          <Player
+            initialName="Player 1"
+            symbol="X"
+            isActive={activePlayer === 'X'}
+            onChangeName={handelPlayerNameChange}
+          />
+          <Player
+            initialName="Player 2"
+            symbol="O"
+            isActive={activePlayer === 'O'}
+            onChangeName={handelPlayerNameChange}
+          />
         </ol>
         {(winner || hasDraw) && (<GameOver winner={winner} onRestart={handelRestart} />)}
         <GameBoard
