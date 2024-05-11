@@ -252,6 +252,7 @@ ol {
   justify-content: center;
   flex-wrap: wrap;
   border-radius: 15px;
+  gap: 0 12px;
 }
 
 #log li {
