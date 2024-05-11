@@ -241,18 +241,23 @@ ol {
 }
 
 #log {
-  max-width: 20rem;
+  max-width: 40rem;
   color: #3f3b00;
   list-style: none;
   margin: 2rem auto;
   padding: 0;
   text-align: center;
+  display: flex;
+  background-color: bisque;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 15px;
 }
 
 #log li {
   border-radius: 4px;
   animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  margin: 0.75rem;
+  margin: 0.35rem;
 }
 
 #log li.highlighted {
