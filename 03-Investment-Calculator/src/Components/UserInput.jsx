@@ -1,20 +1,4 @@
-import { useState } from "react"
-
-export default function UserInput() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 12000,
-    annualInvestment: 1500,
-    expectedReturn: 6,
-    duration: 10
-  })
-
-  function handelChange(inputIdentifier, newValue) {
-    setUserInput(prevInput => ({
-      ...prevInput,
-      [inputIdentifier]: newValue === 0 ? '' : newValue,
-    }));
-  }
-
+export default function UserInput({onInputChange, userInput}) {
   return (
     <section id="user-input">
 
@@ -24,7 +8,7 @@ export default function UserInput() {
             type="number"
             required
             value={userInput.initialInvestment}
-            onChange={(event) => handelChange('initialInvestment', + event.target.value)}
+            onChange={(event) => onInputChange('initialInvestment', + event.target.value)}
           />
         </label>
         <label>Annual Investment ($)
@@ -32,7 +16,7 @@ export default function UserInput() {
             type="number"
             required
             value={userInput.annualInvestment}
-            onChange={(event) => handelChange('annualInvestment', + event.target.value)}
+            onChange={(event) => onInputChange('annualInvestment', + event.target.value)}
           />
         </label>
       </div>
@@ -43,7 +27,7 @@ export default function UserInput() {
             type="number"
             required
             value={userInput.expectedReturn}
-            onChange={(event) => handelChange('expectedReturn', + event.target.value)}
+            onChange={(event) => onInputChange('expectedReturn', + event.target.value)}
           />
         </label>
         <label>Investment Duration (Years)
@@ -51,7 +35,7 @@ export default function UserInput() {
             type="number"
             required
             value={userInput.duration}
-            onChange={(event) => handelChange('duration', + event.target.value)}
+            onChange={(event) => onInputChange('duration', + event.target.value)}
           />
         </label>
       </div>

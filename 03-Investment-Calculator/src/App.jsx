@@ -1,13 +1,28 @@
-import Header from "./Components/Header.jsx";
-import Result from "./Components/Result";
-import UserInput from "./Components/UserInput";
+import { useState } from "react";
+import Header from './Components/Header.jsx';
+import UserInput from './Components/UserInput.jsx';
+import Result from './Components/Results.jsx';
 
 function App() {
+  const [userInput, setUserInput] = useState({
+    initialInvestment: 12000,
+    annualInvestment: 1500,
+    expectedReturn: 6,
+    duration: 10
+  })
+
+  function handelChange(inputIdentifier, newValue) {
+    setUserInput(prevInput => ({
+      ...prevInput,
+      [inputIdentifier]: newValue === 0 ? '' : newValue,
+    }));
+  }
+
   return (
     <>
       <Header />
-      <UserInput />
-      <Result />
+      <UserInput userInput={userInput} onInputChange={handelChange} />
+      <Result input={userInput} />
     </>
   );
 }
