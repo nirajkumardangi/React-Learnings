@@ -15,3 +15,13 @@ This project is a classic implementation of the Tic-Tac-Toe game using React.js.
 
 ## Live Link
 [Live Demo](https://tic-tac-toe-niraj.netlify.app/)
+
+---
+
+# Project Name: 02 Investment-Calculator
+
+## Description
+This project is a classic implementation of the investment calculator React ap. It offers a simple and intuitive interface for calculating the investment report.
+
+## Live Link
+[Live Demo](https://investment-calculator-byniraj.netlify.app/)
