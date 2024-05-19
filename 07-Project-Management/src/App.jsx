@@ -10,7 +10,6 @@ function App() {
   })
 
   function handelStartAddProject() {
-    console.log("click");
     setProjectsState(prevState => {
       return {
         ...prevState,
@@ -19,16 +18,30 @@ function App() {
     });
   }
 
+  function handelAddProject(projectData) {
+    setProjectsState(prevState => {
+      const newProject = {
+        ...projectData,
+        id: Math.random()
+      }
+
+      return{
+        ...prevState,
+        projects: [...prevState.projects, newProject]
+      }
+    })
+  }
+
   let content;
 
   if (projectsState.selectedProjectID === null) {
-    content = <NewProject />
+    content = <NewProject onAdd={handelAddProject} />
   } else if (projectsState.selectedProjectID === undefined) {
     content = <NoProjectSelected onStartAddProject={handelStartAddProject} />
   }
 
   return (
-    <main className="h-screen my-8 flex gap-8">
+    <main className="h-screen flex gap-8">
       <ProjectsSidebar onStartAddProject={handelStartAddProject} />
       {content}
     </main>
