@@ -1,7 +1,9 @@
+import Expenses from "./components/Expenses";
+
 export default function App() {
   return (
     <>
-      <h1>This is a Heading</h1>
+      <Expenses />
     </>
   );
 }
