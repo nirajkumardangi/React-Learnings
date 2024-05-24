@@ -64,4 +64,4 @@ Refs-and-Portals in React offer direct DOM manipulation through refs and enable 
 Project-Management is a React application designed to facilitate task planning, organization, and tracking. It leverages React's component-based architecture to deliver a seamless and interactive user experience for managing projects efficiently.
 
 ## Live Link
-[Live Demo](https://refsandportalsbyniraj.netlify.app/)
+[Live Demo](https://projectmanagementbyniraj.netlify.app/)
