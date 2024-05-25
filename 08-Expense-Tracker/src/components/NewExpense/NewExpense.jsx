@@ -1,10 +1,10 @@
 import ExpenseForm from "./ExpenseForm";
-import './NewExpense.css'
+import "./NewExpense.css";
 
-export default function NewExpense() {
+export default function NewExpense({ onAddExpense }) {
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onAddExpense={onAddExpense} />
     </div>
-  )
+  );
 }

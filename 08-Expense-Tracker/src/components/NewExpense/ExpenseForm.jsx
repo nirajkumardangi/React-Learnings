@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-export default function ExpenseForm() {
-  const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+export default function ExpenseForm({ onAddExpense }) {
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   function titleChangeHandler(event) {
     setEnteredTitle(event.target.value);
@@ -24,32 +24,26 @@ export default function ExpenseForm() {
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
-      date: new Date(enteredDate)
-    }
+      date: new Date(enteredDate),
+    };
+
+    onAddExpense(expenseData);
 
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
-
-    console.log(expenseData);
   }
-
-  // function inputChangeHandler(identifier, value) {
-  //   if (identifier === "title") {
-  //     setEnteredTitle(value);
-  //   } else if (identifier === "amount") {
-  //     setEnteredAmount(value);
-  //   } else {
-  //     setEnteredDate(value);
-  //   }
-  // }
 
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
