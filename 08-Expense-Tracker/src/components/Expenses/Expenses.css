@@ -5,3 +5,8 @@
   width: 50rem;
   max-width: 95%;
 }
+
+.expenses h2 {
+  color: aliceblue;
+  text-align: center;
+}

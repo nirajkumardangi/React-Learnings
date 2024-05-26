@@ -3,6 +3,7 @@ import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 import { expensesData } from "./components/Expenses/expensesData";
+import ExpenseChart from "./components/Expenses/ExpenseChart";
 
 export default function App() {
   const [expenses, setExpenses] = useState(expensesData);
@@ -23,10 +24,12 @@ export default function App() {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  console.log(filteredExpenses);
 
   return (
     <>
       <NewExpense onAddExpense={addExpenseHandler} />
+      <ExpenseChart items={filteredExpenses} />
       <ExpenseFilter
         selectedYear={filteredYear}
         onChangeYear={filterChangeHandler}

@@ -6,11 +6,9 @@ export default function Expenses({ items }) {
   return (
     <Card className="expenses">
       {items.length === 0 ? (
-        <p>No expenses found for the selected year.</p>
+        <h2>No expenses found</h2>
       ) : (
-        items.map((expense) => (
-          <ExpenseItem key={expense.id} {...expense} />
-        ))
+        items.map((expense) => <ExpenseItem key={expense.id} {...expense} />)
       )}
     </Card>
   );
