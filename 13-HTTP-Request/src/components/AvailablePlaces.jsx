@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+
 import Places from "./Places.jsx";
 import Error from "./Error.jsx";
 import { sortPlacesByDistance } from "../loc.js";
@@ -7,7 +8,7 @@ import { fetchAvailablePlaces } from "../http.js";
 export default function AvailablePlaces({ onSelectPlace }) {
   const [isFetching, setIsFetching] = useState(false);
   const [availablePlaces, setAvailablePlaces] = useState([]);
-  const [errorMsg, setErrorMsg] = useState();
+  const [error, setError] = useState();
 
   useEffect(() => {
     async function fetchPlaces() {
@@ -16,29 +17,28 @@ export default function AvailablePlaces({ onSelectPlace }) {
       try {
         const places = await fetchAvailablePlaces();
         navigator.geolocation.getCurrentPosition((position) => {
-          const sortedPlace = sortPlacesByDistance(
+          const sortedPlaces = sortPlacesByDistance(
             places,
             position.coords.latitude,
             position.coords.longitude
           );
-          setAvailablePlaces(sortedPlace);
+          setAvailablePlaces(sortedPlaces);
           setIsFetching(false);
         });
       } catch (error) {
-        setErrorMsg({
+        setError({
           message:
-            error.message || "Could not fetch data, please try again later",
+            error.message || "Could not fetch places, please try again later.",
         });
+        setIsFetching(false);
       }
-
-      setIsFetching(false);
     }
 
     fetchPlaces();
   }, []);
 
-  if (errorMsg) {
-    return <Error title="An error occurred" message={errorMsg.message} />;
+  if (error) {
+    return <Error title="An error occurred!" message={error.message} />;
   }
 
   return (
@@ -47,7 +47,7 @@ export default function AvailablePlaces({ onSelectPlace }) {
       places={availablePlaces}
       isLoading={isFetching}
       loadingText="Fetching place data..."
-      fallbackText="No places found"
+      fallbackText="No places available."
       onSelectPlace={onSelectPlace}
     />
   );
