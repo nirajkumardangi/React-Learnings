@@ -1,4 +1,4 @@
-import React from "react";
+import Button from "./UI/Button";
 import { currencyFormatter } from "../util/formatter";
 
 export default function MealItem({ meal }) {
@@ -12,7 +12,7 @@ export default function MealItem({ meal }) {
           <p className="meal-item-description">{meal.description}</p>
         </div>
         <p className="meal-item-actions">
-          <button className="button">Add to Cart</button>
+          <Button>Add to Cart</Button>
         </p>
       </article>
     </li>

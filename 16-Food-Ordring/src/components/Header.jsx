@@ -1,4 +1,4 @@
-import Meals from "./Meals";
+import Button from "./UI/Button";
 
 export default function Header() {
   return (
@@ -8,10 +8,8 @@ export default function Header() {
           <img src="logo.jpg" alt="logo" />
           <span>Order Food</span>
         </h1>
-        <button className="button">Cart (0)</button>
+        <Button textOnly>Cart (0)</Button>
       </header>
-      
-      <Meals />
     </>
   );
 }
