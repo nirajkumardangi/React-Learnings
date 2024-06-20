@@ -47,12 +47,13 @@ function cartReducer(state, action) {
         ...existingCartItem,
         quantity: existingCartItem.quantity - 1,
       };
-      updatedItem[existingCartItemIndex] = updatedItems; // reinsert the updated items
+      updatedItems[existingCartItemIndex] = updatedItems; // reinsert the updated items
     }
 
     return { ...state, items: updatedItems };
   }
 }
+ 
 
 export function CartContextProvider({ children }) {
   const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] });
