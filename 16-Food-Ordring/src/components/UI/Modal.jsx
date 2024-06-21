@@ -1,8 +1,8 @@
-import React, { forwardRef, useEffect, useImperativeHandle } from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react";
 import { createPortal } from "react-dom";
 
-const Modal = forwardRef(({ children, open, className = "" }) => {
+export default function Modal({ children, open, className = "" }) {
   const dialog = useRef();
 
   useEffect(() => {
@@ -21,6 +21,4 @@ const Modal = forwardRef(({ children, open, className = "" }) => {
     </dialog>,
     document.getElementById("modal")
   );
-});
-
-export default Modal;
+}
