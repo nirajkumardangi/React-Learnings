@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "items": [
+      {
+        "id": "m1",
+        "name": "Mac & Cheese",
+        "price": "8.99",
+        "description": "Creamy cheddar cheese mixed with perfectly cooked macaroni, topped with crispy breadcrumbs. A classic comfort food.",
+        "image": "images/mac-and-cheese.jpg",
+        "quantity": 1
+      }
+    ],
+    "customer": {
+      "name": "Oliver Fitzpatrick",
+      "email": "mebi@mailinator.com",
+      "street": "Dolor eu rerum tempo",
+      "postal-code": "Temporibus perspicia",
+      "city": "Vel numquam vero nih"
+    },
+    "id": "923.9511379117031"
+  }
+]
