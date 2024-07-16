@@ -1,9 +1,10 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./assets/pages/HomePage";
+
+const router = createBrowserRouter({ path: "/", element: <HomePage /> });
+
 function App() {
-  return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
