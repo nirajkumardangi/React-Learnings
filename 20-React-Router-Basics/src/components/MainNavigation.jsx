@@ -23,7 +23,7 @@ export default function MainNavigation() {
           </li>
           <li className={classes.list}>
             <NavLink
-              to="/products"
+              to="products"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
