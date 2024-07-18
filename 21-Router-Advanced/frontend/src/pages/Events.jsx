@@ -16,15 +16,17 @@ export default function EventsPage() {
 
 // define router loader() function which only contain js code or browser API's, not react because it execute on the browser.
 export async function loader() {
-  const response = await fetch("http://localhost:8080/events3");
+  const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
     // return { isError: true, message: "Could not fetch events." };
 
-    throw new Response(
-      JSON.stringify({ message: "Could not fetched events." }),
-      { status: 500 }
-    );
+    // throw new Response(
+    //   JSON.stringify({ message: "Could not fetched events." }),
+    //   { status: 500 }
+    // );
+
+    throw json({ message: "Could not fetched events." }, { status: 500 });
   } else {
     // const resData = await response.json();
     // return resData.events;
