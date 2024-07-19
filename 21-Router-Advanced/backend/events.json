@@ -1,6 +1,20 @@
 {
   "events": [
     {
+      "title": "Test Events",
+      "image": "https://www.pingpongmoments.in/blog/wp-content/uploads/2022/09/corporate-events-3.jpg",
+      "date": "2024-07-27",
+      "description": "Some events",
+      "id": "14ee8092-1d59-4d62-8493-4826a57bfda5"
+    },
+    {
+      "title": "Night Part",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFI7ygT65aVwQcrF_RPAqJQvfDXby3GVDyng&s",
+      "date": "1986-11-13",
+      "description": "Sunday Night Party Event",
+      "id": "435de0eb-4af9-4791-875d-2f1bbadafea3"
+    },
+    {
       "id": "e1",
       "title": "A dummy event",
       "date": "2023-02-22",
