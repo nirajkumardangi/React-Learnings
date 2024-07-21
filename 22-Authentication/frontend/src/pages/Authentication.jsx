@@ -23,7 +23,7 @@ export async function action({ request }) {
     password: data.get("password"),
   };
 
-  const response = fetch("http:/localhost:8080/" + mode, {
+  const response = await fetch("http://localhost:8080/" + mode, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,13 +31,18 @@ export async function action({ request }) {
     body: JSON.stringify(authData),
   });
 
-  if (response.status === 422 || response === 401) {
+  if (response.status === 422 || response.status === 401) {
     return response;
   }
+
+  console.log("Response received", response);
 
   if (!response.ok) {
     return json({ message: "Could not authenticate user" }, { status: 500 });
   }
+
+  
+// console.log("Response received", response);
 
   return redirect("/");
 }
