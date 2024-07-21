@@ -7,7 +7,7 @@ export default function EventsPage() {
   const { events } = useLoaderData();
 
   return (
-    <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
+    <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={events}>
         {(loadedEvents) => <EventsList events={loadedEvents}></EventsList>}
       </Await>
@@ -19,16 +19,9 @@ async function loadEvents() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
-    // return { isError: true, message: "Could not fetch events." };
-
-    // throw new Response(
-    //   JSON.stringify({ message: "Could not fetched events." }),
-    //   { status: 500 }
-    // );
-
     throw json({ message: "Could not fetched events." }, { status: 500 });
   } else {
-    const resData = await response.json()
+    const resData = await response.json();
     return resData.events;
   }
 }
