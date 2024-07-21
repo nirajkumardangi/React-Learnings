@@ -1,21 +1,21 @@
-import { useLoaderData } from "react-router-dom";
+import { defer, useLoaderData, Await } from "react-router-dom";
+import { Suspense } from "react";
 
 import EventsList from "../components/EventsList";
 
 export default function EventsPage() {
-  const data = useLoaderData();
+  const { events } = useLoaderData();
 
-  // if (data.isError) {
-  //   return <p>{data.message}</p>
-  // }
-
-  const events = data.events;
-
-  return <EventsList events={events} />;
+  return (
+    <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents}></EventsList>}
+      </Await>
+    </Suspense>
+  );
 }
 
-// define router loader() function which only contain js code or browser API's, not react because it execute on the browser.
-export async function loader() {
+async function loadEvents() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
@@ -28,9 +28,14 @@ export async function loader() {
 
     throw json({ message: "Could not fetched events." }, { status: 500 });
   } else {
-    // const resData = await response.json();
-    // return resData.events;
-
-    return response; // because loader fn automatically resolve <promises>
+    const resData = await response.json()
+    return resData.events;
   }
+}
+
+// define router loader() function which only contain js code or browser API's, not react because it execute on the browser.
+export async function loader() {
+  return defer({
+    events: loadEvents(),
+  });
 }
