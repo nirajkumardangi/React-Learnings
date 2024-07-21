@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
-import { getAuthToken } from "./util/auth";
+import { getAuthToken } from "../util/auth";
 
 function EventForm({ method, event }) {
   const data = useActionData();
@@ -97,7 +97,7 @@ export async function action({ request, params }) {
 
   let url = "http://localhost:8080/events";
 
-  if(method === 'PATCH') {
+  if (method === "PATCH") {
     const eventId = params.eventId;
     url = "http://localhost:8080/events/" + eventId;
   }
@@ -107,7 +107,7 @@ export async function action({ request, params }) {
     method: method,
     headers: {
       "Content-Type": "application/json",
-      'Authorization': 'Bearer ' + token
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(eventData),
   });
