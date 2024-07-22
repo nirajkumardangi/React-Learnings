@@ -12,7 +12,7 @@ export default function FindEventSection() {
 
   const { data, isPending, isError, error } = useQuery({
     queryKey: ['events', { search: searchTerm }],
-    queryFn: () => fetchEvents(searchTerm),
+    queryFn: ({ signal }) => fetchEvents({ signal, searchTerm }),
   });
 
   function handleSubmit(event) {
@@ -39,7 +39,7 @@ export default function FindEventSection() {
     content = (
       <ul className="events-list">
         {data.map((event) => (
-          <li key={event.is}>
+          <li key={event.id}>
             <EventItem event={event} />
           </li>
         ))}
