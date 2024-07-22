@@ -10,7 +10,7 @@ export default function NewEventsSection() {
     queryKey: ['events'],
     queryFn: fetchEvents,
     staleTime: 2 * 60 * 5000, // during this time data not refetch in background.
-    gcTime: 1000, // time that cached data remains in memory, after time over data being garbage collected. 
+    gcTime: 5 * 60 * 1000, // time that cached data remains in memory, after time over data being garbage collected. 
   });
 
   let content;
