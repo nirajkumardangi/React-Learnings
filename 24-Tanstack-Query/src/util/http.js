@@ -1,8 +1,8 @@
 export async function fetchEvents({ signal, searchTerm }) {
-  const url = 'http://localhost:3000/events';
+  let url = 'http://localhost:3000/events';
 
   if (searchTerm) {
-    url += `?search=${searchTerm}`;
+    url += '?search=' + searchTerm;
   }
   
   const response = await fetch(url, { signal: signal });
