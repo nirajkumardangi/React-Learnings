@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import { createNewEvent } from '../../util/http.js';
 
 import Modal from '../UI/Modal.jsx';
 import EventForm from './EventForm.jsx';
-import ErrorBlock from '../UI/ErrorBlock';
+import { createNewEvent } from '../../util/http.js';
+import ErrorBlock from '../UI/ErrorBlock.jsx';
 
 export default function NewEvent() {
   const navigate = useNavigate();
@@ -32,7 +32,15 @@ export default function NewEvent() {
           </>
         )}
       </EventForm>
-      {isError && <ErrorBlock title="Failed to create events" message={error.info?.message || 'Failed to create event. Please check your inputs and try again later.'} />}
+      {isError && (
+        <ErrorBlock
+          title="Failed to create event"
+          message={
+            error.info?.message ||
+            'Failed to create event. Please check your inputs and try again later.'
+          }
+        />
+      )}
     </Modal>
   );
 }
