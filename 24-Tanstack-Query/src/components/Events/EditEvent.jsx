@@ -3,7 +3,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 import Modal from '../UI/Modal.jsx';
 import EventForm from './EventForm.jsx';
-import { fetchEvent, updateEvent } from '../../util/http.js';
+import { fetchEvent, queryClient, updateEvent } from '../../util/http.js';
 import LoadingIndicator from '../UI/LoadingIndicator.jsx';
 import ErrorBlock from '../UI/ErrorBlock.jsx';
 
@@ -17,12 +17,27 @@ export default function EditEvent() {
   });
 
   const { mutate } = useMutation({
-    mutationKey: [],
     mutationFn: updateEvent,
+    onMutate: async (data) => {
+      const newEvent = data.event;
+
+      await queryClient.cancelQueries({ queryKey: ['events', id] }); // Cancel the ongoing queries data.
+      const previousEvent = queryClient.getQueryData(['events', id]); // Retrieve the Cached query data.
+
+      queryClient.setQueryData(['events', id], newEvent); // manually update a specific query data without making actual request to the server.
+
+      return { previousEvent };
+    },
+    onError: (error, data, context) => {
+      queryClient.setQueryData(['events', id], context.previousEvent);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries(['events', id]);
+    },
   });
 
   function handleSubmit(formData) {
-    mutate({id, event: formData});
+    mutate({ id, event: formData });
     navigate('../');
   }
 
@@ -47,7 +62,7 @@ export default function EditEvent() {
           title="Failed to load event"
           message={
             error.info?.message ||
-            'Failed to load event. Please check you input and try again later'
+            'Failed to load event. Please check your input and try again later.'
           }
         />
         <div className="form-actions">
